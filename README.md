@@ -1,1 +1,2 @@
-# 2053-Android-Project
+# Android Application for Pokemon Information
+## Carter Schmidt, Ryan Vaughan, Jack Ahmed
