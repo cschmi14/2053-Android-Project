@@ -40,6 +40,8 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonV
     @Override
     public void onBindViewHolder(@NonNull PokemonViewHolder holder, int position) {
         // TODO: Set view holder properties to appropriate info
+        Pokemon currentPoke = pokemon.get(position);
+        holder.mName.setText(currentPoke.getName());
     }
 
     @Override
@@ -48,12 +50,12 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonV
     }
 
     class PokemonViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private TextView mRecipeTitle;
-        private TextView mRecipeDescription;
+        private TextView mName;
         private PokemonAdapter adapter;
         public PokemonViewHolder(View itemView, PokemonAdapter adapter) {
             super(itemView);
             // TODO: find views by id
+            mName = itemView.findViewById(R.id.pokemon_name);
             this.adapter = adapter;
             itemView.setOnClickListener(this);
         }
