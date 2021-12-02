@@ -19,24 +19,24 @@ import java.net.URL;
 
 public class FetchPokemon extends AsyncTask<String, Void, String> {
     private WeakReference<TextView> mName;
-    private WeakReference<ImageView> mIcon;
-    private WeakReference<TextView> mStats;
-    private WeakReference<TextView> mDescription;
-    private WeakReference<TextView> mType;
-    private WeakReference<TextView> mDexNumber;
+//    private WeakReference<ImageView> mIcon;
+//    private WeakReference<TextView> mStats;
+//    private WeakReference<TextView> mDescription;
+//    private WeakReference<TextView> mType;
+//    private WeakReference<TextView> mDexNumber;
 
     FetchPokemon(TextView mName, TextView mStats, TextView mDescription, TextView mType, TextView mDexNumber, ImageView mIcon) {
         this.mName = new WeakReference<>(mName);
-        this.mStats = new WeakReference<>(mStats);
-        this.mDescription = new WeakReference<>(mDescription);
-        this.mType = new WeakReference<>(mType);
-        this.mDexNumber = new WeakReference<>(mDexNumber);
-        this.mIcon = new WeakReference<>(mIcon);
+//        this.mStats = new WeakReference<>(mStats);
+//        this.mDescription = new WeakReference<>(mDescription);
+//        this.mType = new WeakReference<>(mType);
+//        this.mDexNumber = new WeakReference<>(mDexNumber);
+//        this.mIcon = new WeakReference<>(mIcon);
     }
 
     protected String getPokemonInfo(String query) throws IOException {
         //Pokemon API URL
-        String apiURL = "https://pokeapi.co/";
+        String apiURL = "https://pokeapi.co/api/v2/pokemon/";
         //Append query
         apiURL += query;
 
@@ -76,26 +76,26 @@ public class FetchPokemon extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String x) {
         super.onPostExecute(x);
         String mName = null;
-        String mDescription = null;
-        String mType = null;
-        String mDexNumber = null;
-        String mIcon = null;
-        String[] mStats = null;
+//        String mDescription = null;
+//        String mType = null;
+//        String mDexNumber = null;
+//        String mIcon = null;
+//        String[] mStats = null;
         JSONObject jsonObject = null;
         JSONArray itemsArray = null;
         int i = 0;
         try {
-            jsonObject = new JSONObject(x);
-            itemsArray = new jsonObject.getJSONArray("items");
-            while (i<itemsArray.length() && mName == null && mDescription == null && mType == null && mDexNumber == null && mIcon == null && mStats == null) {
-                JSONObject pokemon = itemsArray.getJSONObject(i);
-                JSONObject dex = pokemon.getJSONObject("dex");
-                title = volumeInfo.getString("title");
-                author = volumeInfo.getString("authors");
-                mName.get().setText(mName);
-                mTitleText.get().setText(title);
-                i++;
-            }
+            JSONObject object = new JSONObject(x);
+            JSONObject name = object.getJSONObject("name");
+//            while (i<itemsArray.length() && mName == null /* && mDescription == null && mType == null && mDexNumber == null && mIcon == null && mStats == null */) {
+//                JSONObject pokemon = itemsArray.getJSONObject(i);
+//                JSONObject dex = pokemon.getJSONObject("dex");
+//                title = volumeInfo.getString("title");
+//                author = volumeInfo.getString("authors");
+//                mName.get().setText(mName);
+//                mTitleText.get().setText(title);
+//                i++;
+//            }
         } catch (Exception e) {
             e.printStackTrace();
         }
