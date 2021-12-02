@@ -17,16 +17,16 @@ import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class FetchPokemon extends AsyncTask<String, Void, String> {
-    private WeakReference<TextView> mName;
+public class FetchPokemon {
+    private String mName;
 //    private WeakReference<ImageView> mIcon;
 //    private WeakReference<TextView> mStats;
 //    private WeakReference<TextView> mDescription;
 //    private WeakReference<TextView> mType;
 //    private WeakReference<TextView> mDexNumber;
 
-    FetchPokemon(TextView mName, TextView mStats, TextView mDescription, TextView mType, TextView mDexNumber, ImageView mIcon) {
-        this.mName = new WeakReference<>(mName);
+    FetchPokemon(String mName/*, TextView mStats, TextView mDescription, TextView mType, TextView mDexNumber, ImageView mIcon*/) {
+        this.mName = mName;
 //        this.mStats = new WeakReference<>(mStats);
 //        this.mDescription = new WeakReference<>(mDescription);
 //        this.mType = new WeakReference<>(mType);
@@ -62,19 +62,18 @@ public class FetchPokemon extends AsyncTask<String, Void, String> {
         return jsonString;
     }
 
-    @Override
-    protected String doInBackground(String... strings) {
-        String jsonString = null;
-        try {
-            jsonString = getPokemonInfo(strings[0]);
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
-        return jsonString;
-    }
+//    @Override
+//    protected String doInBackground(String... strings) {
+//        String jsonString = null;
+//        try {
+//            jsonString = getPokemonInfo(strings[0]);
+//        } catch(IOException e) {
+//            e.printStackTrace();
+//        }
+//        return jsonString;
+//    }
 
     protected void onPostExecute(String x) {
-        super.onPostExecute(x);
         String mName = null;
 //        String mDescription = null;
 //        String mType = null;
