@@ -19,19 +19,19 @@ import java.net.URL;
 
 public class FetchPokemon {
     private String mName;
-//    private WeakReference<ImageView> mIcon;
-//    private WeakReference<TextView> mStats;
-//    private WeakReference<TextView> mDescription;
-//    private WeakReference<TextView> mType;
-//    private WeakReference<TextView> mDexNumber;
+//    private String mIconURL;
+//    private String mStats;
+//    private String mDescription;
+//    private String mType;
+//    private String mDexNumber;
 
-    FetchPokemon(String mName/*, TextView mStats, TextView mDescription, TextView mType, TextView mDexNumber, ImageView mIcon*/) {
+    FetchPokemon(String mName/*, String mStats, String mDescription, String mType, String mDexNumber, String mIconURL*/) {
         this.mName = mName;
-//        this.mStats = new WeakReference<>(mStats);
-//        this.mDescription = new WeakReference<>(mDescription);
-//        this.mType = new WeakReference<>(mType);
-//        this.mDexNumber = new WeakReference<>(mDexNumber);
-//        this.mIcon = new WeakReference<>(mIcon);
+//        this.mStats = mStats;
+//        this.mDescription = mDescription;
+//        this.mType = mType;
+//        this.mDexNumber = mDexNumber;
+//        this.mIconURL = mIconURL;
     }
 
     protected String getPokemonInfo(String query) throws IOException {

@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 //        for (int i = 0; i < 10; i++) {
 //            getPokemonInfo(Integer.toString(i))
 //        }
-        mRecyclerView.findViewById(R.id.main_recycler);
+        mRecyclerView = findViewById(R.id.main_recycler);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new PokemonAdapter(this, pokeList);
         mRecyclerView.setAdapter(mAdapter);
