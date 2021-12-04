@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import java.util.LinkedList;
 
@@ -18,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         LinkedList<Pokemon> pokeList = new LinkedList<Pokemon>();
         Pokemon Bulbasaur = new Pokemon("Bulbasaur");
+
+
         pokeList.add(Bulbasaur);
 //        for (int i = 0; i < 10; i++) {
 //            getPokemonInfo(Integer.toString(i))
