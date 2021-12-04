@@ -17,7 +17,7 @@ import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class FetchPokemon extends AsyncTask <{
+public class FetchPokemon extends AsyncTask <String, Void, String>{
     private WeakReference<TextView> mName;
 //    private String mIconURL;
 //    private String mStats;
@@ -72,6 +72,17 @@ public class FetchPokemon extends AsyncTask <{
 //        }
 //        return jsonString;
 //    }
+
+    @Override
+    protected String doInBackground(String... strings) {
+        String jsonString = null;
+        try {
+            jsonString = getPokemonInfo("1");
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+        return jsonString;
+    }
 
     protected void onPostExecute(String x) {
         String mName = null;
