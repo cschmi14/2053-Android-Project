@@ -55,7 +55,7 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonV
         public PokemonViewHolder(View itemView, PokemonAdapter adapter) {
             super(itemView);
             // TODO: find views by id
-            mName = itemView.findViewById(R.id.pokemon_name);
+            mName = (TextView) itemView.findViewById(R.id.pokemon_name);
             this.adapter = adapter;
             itemView.setOnClickListener(this);
         }
