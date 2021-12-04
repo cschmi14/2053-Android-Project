@@ -18,13 +18,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         LinkedList<Pokemon> pokeList = new LinkedList<Pokemon>();
-        Pokemon Bulbasaur = new Pokemon("Bulbasaur");
-
-
-        pokeList.add(Bulbasaur);
-//        for (int i = 0; i < 10; i++) {
-//            getPokemonInfo(Integer.toString(i))
-//        }
+//        Pokemon Bulbasaur = new Pokemon("Bulbasaur");
+//
+//
+//        pokeList.add(Bulbasaur);
+        for (int i = 0; i < 10; i++) {
+            getPokemonInfo(Integer.toString(i))
+        }
         mRecyclerView = findViewById(R.id.main_recycler);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new PokemonAdapter(this, pokeList);

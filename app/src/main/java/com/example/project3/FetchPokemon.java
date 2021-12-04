@@ -17,16 +17,16 @@ import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class FetchPokemon {
-    private String mName;
+public class FetchPokemon extends AsyncTask <{
+    private WeakReference<TextView> mName;
 //    private String mIconURL;
 //    private String mStats;
 //    private String mDescription;
 //    private String mType;
 //    private String mDexNumber;
 
-    FetchPokemon(String mName/*, String mStats, String mDescription, String mType, String mDexNumber, String mIconURL*/) {
-        this.mName = mName;
+    FetchPokemon(TextView mName) {
+        this.mName = new WeakReference<TextView>(mName);
 //        this.mStats = mStats;
 //        this.mDescription = mDescription;
 //        this.mType = mType;
