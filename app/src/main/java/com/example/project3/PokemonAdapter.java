@@ -63,7 +63,10 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonV
 
         @Override
         public void onClick(View v) {
-            // TODO: Implement
+            Intent intent = new Intent(context, PokemonDetailActivity.class);
+            int mPosition = getLayoutPosition();
+            intent.putExtra("IMAGE", pokemon.get(mPosition).getName());
+            context.startActivity(intent);
         }
     }
 }
