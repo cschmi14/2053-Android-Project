@@ -4,15 +4,13 @@ public class Pokemon {
     private String name;
     private String icon;
     private int[] stats;
-    private String description;
     private String type;
     private int dexNumber;
 
-    public Pokemon(String name, int[] stats, String icon, String description, String type, int dexNumber) {
+    public Pokemon(String name, int[] stats, String icon, String type, int dexNumber) {
         this.name = name;
         this.stats = stats;
         this.icon = icon;
-        this.description = description;
         this.type = type;
         this.dexNumber = dexNumber;
     }
@@ -27,10 +25,6 @@ public class Pokemon {
 
     public String getName() {
         return this.name;
-    }
-
-    public String getDescription() {
-        return this.description;
     }
 
     public String getType() {

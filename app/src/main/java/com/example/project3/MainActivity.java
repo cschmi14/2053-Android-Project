@@ -125,10 +125,14 @@ public class MainActivity extends AppCompatActivity {
 
             private Pokemon parseJson(String json) {
                 try {
-                    JSONObject json_name = new JSONObject(json);
-                    String pkmn_name = json_name.getString("name");
-//                    Pokemon pkmn = new Pokemon(pkmn_name);
-//                    return pkmn;
+                    JSONObject json_str = new JSONObject(json);
+                    String pkmn_name = json_str.getString("name");
+                    int[] stats = json_str.getJSONArray("stats");
+                    String icon = ;
+                    String type = ;
+                    int dexNum = ;
+                    Pokemon pkmn = new Pokemon(pkmn_name, stats, icon, type, dexNum);
+                    return pkmn;
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
