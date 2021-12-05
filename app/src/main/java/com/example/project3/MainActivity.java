@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Pokemon Bulbasaur = new Pokemon("aaa");
         pokeList.add(Bulbasaur);
+        pokeList.add(new Pokemon("New guy"));
 //        for (int i = 0; i < 10; i++) {
 //            FetchPokemon fp = new FetchPokemon();
 //            fp.execute(Integer.toString(i));
@@ -49,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
     private void load_data() {
         AsyncTask<String, Void, String> task = new AsyncTask <String, Void, String>() {
             protected String getPokemonInfo(String query) throws IOException {
-                Log.d("MEE", "Got into getpi");
                 //Pokemon API URL
                 String apiURL = "https://pokeapi.co/api/v2/pokemon/";
                 //Append query
@@ -73,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
                     builder.append("\n");
                 }
                 String jsonString = builder.toString();
-                Log.d("FetchBookTagJsonString", jsonString);
                 return jsonString;
             }
 
@@ -82,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 String jsonString = null;
                 try {
                     jsonString = getPokemonInfo(strings[0]);
-                    Pokemon pkmn = new Pokemon(jsonString);
+                    Pokemon pkmn = new parseJson(jsonString);
                     pokeList.add(pkmn);
                 } catch(IOException e) {
                     e.printStackTrace();
@@ -92,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             protected void onPostExecute(String x) {
+                mAdapter.notifyDataSetChanged();
                 String mName = null;
 //        String mDescription = null;
 //        String mType = null;
@@ -100,10 +100,15 @@ public class MainActivity extends AppCompatActivity {
 //        String[] mStats = null;
                 JSONObject jsonObject = null;
                 JSONArray itemsArray = null;
+                Log.d("FetchBookTagJsonString", x);
+
 //        int i = 0;
                 try {
                     JSONObject object = new JSONObject(x);
-                    JSONObject name = object.getJSONObject("name");
+                    Log.d("Object name", object.getString("name"));
+                    Pokemon pk = new Pokemon(object.getString("name"));
+                    pokeList.add(pk);
+//                    JSONObject name = object.getJSONObject("name");
 //            while (i<itemsArray.length() && mName == null /* && mDescription == null && mType == null && mDexNumber == null && mIcon == null && mStats == null */) {
 //                JSONObject pokemon = itemsArray.getJSONObject(i);
 //                JSONObject dex = pokemon.getJSONObject("dex");
