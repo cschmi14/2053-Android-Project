@@ -4,7 +4,6 @@ public class Pokemon {
     private String name;
     private String icon;
     private int[] stats;
-    private String description;
     private String type;
     private int dexNumber;
 
