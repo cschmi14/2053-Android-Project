@@ -34,15 +34,10 @@ public class MainActivity extends AppCompatActivity {
         Pokemon Bulbasaur = new Pokemon("aaa");
         pokeList.add(Bulbasaur);
         pokeList.add(new Pokemon("New guy"));
-//        for (int i = 0; i < 10; i++) {
-//            FetchPokemon fp = new FetchPokemon();
-//            fp.execute(Integer.toString(i));
-//        }
         mRecyclerView = findViewById(R.id.main_recycler);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new PokemonAdapter(this, pokeList);
         mRecyclerView.setAdapter(mAdapter);
-
         load_data();
 //
     }
@@ -81,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 String jsonString = null;
                 try {
                     jsonString = getPokemonInfo(strings[0]);
-                    Pokemon pkmn = new parseJson(jsonString);
+                    Pokemon pkmn = parseJson(jsonString);
                     pokeList.add(pkmn);
                 } catch(IOException e) {
                     e.printStackTrace();
@@ -122,7 +117,21 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
+
+            private Pokemon parseJson(String json) {
+                try {
+                    JSONObject json_name = new JSONObject(json);
+                    String pkmn_name = json_name.getString("name");
+                    Pokemon pkmn = new Pokemon(pkmn_name);
+                    return pkmn;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
         };
-        task.execute("5");
+        for (int i = 1; i < 11; i++) {
+            task.execute(Integer.toString(i));
+        }
     }
 }
