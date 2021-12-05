@@ -32,8 +32,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         LinkedList<Pokemon> pokeList = new LinkedList<Pokemon>();
+        Pokemon Bulbasaur = new Pokemon();
         int[] stats = {1,1,1,1,1,1};
-        Pokemon Bulbasaur = new Pokemon("Bulbasaur", stats, "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png", "descURL", "Grass", 1);
+        Bulbasaur.setName("Bulbasaur");
+        Bulbasaur.setStats(stats);
+        Bulbasaur.setIcon("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png");
+        Bulbasaur.setType("Grass");
+        Bulbasaur.setDexNumber(1);
         pokeList.add(Bulbasaur);
 //        for (int i = 0; i < 10; i++) {
 //            FetchPokemon fp = new FetchPokemon();

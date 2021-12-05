@@ -22,7 +22,7 @@ public class Pokemon {
     public int[] getStats() {
         return this.stats;
     }
-    public void setStats() {
+    public void setStats(int[] stats) {
         this.stats = stats;
     }
 
