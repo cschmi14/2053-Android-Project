@@ -28,26 +28,28 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Pokemon Bulbasaur = new Pokemon("");
-
+        Pokemon Bulbasaur = new Pokemon("aaa");
         pokeList.add(Bulbasaur);
-        for (int i = 0; i < 10; i++) {
-            FetchPokemon fp = new FetchPokemon();
-            fp.execute(Integer.toString(i));
-        }
+//        for (int i = 0; i < 10; i++) {
+//            FetchPokemon fp = new FetchPokemon();
+//            fp.execute(Integer.toString(i));
+//        }
         mRecyclerView = findViewById(R.id.main_recycler);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new PokemonAdapter(this, pokeList);
         mRecyclerView.setAdapter(mAdapter);
-        load_data();
 
+        load_data();
+//
     }
 
     private void load_data() {
         AsyncTask<String, Void, String> task = new AsyncTask <String, Void, String>() {
             protected String getPokemonInfo(String query) throws IOException {
+                Log.d("MEE", "Got into getpi");
                 //Pokemon API URL
                 String apiURL = "https://pokeapi.co/api/v2/pokemon/";
                 //Append query
@@ -116,5 +118,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
+        task.execute("5");
     }
 }
