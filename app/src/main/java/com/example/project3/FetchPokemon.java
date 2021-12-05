@@ -17,21 +17,20 @@ import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class FetchPokemon {
-    private String mName;
-//    private WeakReference<ImageView> mIcon;
-//    private WeakReference<TextView> mStats;
-//    private WeakReference<TextView> mDescription;
-//    private WeakReference<TextView> mType;
-//    private WeakReference<TextView> mDexNumber;
+public class FetchPokemon extends AsyncTask <String, Void, String>{
+    private WeakReference<TextView> mName;
+//    private String mIconURL;
+//    private String mStats;
+//    private String mDescription;
+//    private String mType;
+//    private String mDexNumber;
 
-    FetchPokemon(String mName/*, TextView mStats, TextView mDescription, TextView mType, TextView mDexNumber, ImageView mIcon*/) {
-        this.mName = mName;
-//        this.mStats = new WeakReference<>(mStats);
-//        this.mDescription = new WeakReference<>(mDescription);
-//        this.mType = new WeakReference<>(mType);
-//        this.mDexNumber = new WeakReference<>(mDexNumber);
-//        this.mIcon = new WeakReference<>(mIcon);
+    FetchPokemon() {
+//        this.mStats = mStats;
+//        this.mDescription = mDescription;
+//        this.mType = mType;
+//        this.mDexNumber = mDexNumber;
+//        this.mIconURL = mIconURL;
     }
 
     protected String getPokemonInfo(String query) throws IOException {
@@ -50,7 +49,7 @@ public class FetchPokemon {
         InputStream inputStream = urlConnection.getInputStream();
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
-        //Create a String with the reponse
+        //Create a String with the response
         StringBuilder builder = new StringBuilder();
         String line;
         while ((line = reader.readLine()) != null) {
@@ -62,16 +61,16 @@ public class FetchPokemon {
         return jsonString;
     }
 
-//    @Override
-//    protected String doInBackground(String... strings) {
-//        String jsonString = null;
-//        try {
-//            jsonString = getPokemonInfo(strings[0]);
-//        } catch(IOException e) {
-//            e.printStackTrace();
-//        }
-//        return jsonString;
-//    }
+    @Override
+    protected String doInBackground(String... strings) {
+        String jsonString = null;
+        try {
+            jsonString = getPokemonInfo(strings[0]);
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+        return jsonString;
+    }
 
     protected void onPostExecute(String x) {
         String mName = null;
@@ -82,7 +81,7 @@ public class FetchPokemon {
 //        String[] mStats = null;
         JSONObject jsonObject = null;
         JSONArray itemsArray = null;
-        int i = 0;
+//        int i = 0;
         try {
             JSONObject object = new JSONObject(x);
             JSONObject name = object.getJSONObject("name");

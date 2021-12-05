@@ -33,7 +33,7 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonV
     @NonNull
     @Override
     public PokemonViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View mPokemonView = mInflater.from(parent.getContext()).inflate(R.layout.pokemon_item, parent, false);
+        View mPokemonView = mInflater.inflate(R.layout.pokemon_item, parent, false);
         return new PokemonViewHolder(mPokemonView, this);
     }
 
@@ -59,7 +59,6 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonV
             this.adapter = adapter;
             itemView.setOnClickListener(this);
         }
-
 
         @Override
         public void onClick(View v) {

@@ -1,1 +1,11 @@
 local.properties
+.gradle/
+<<<<<<< HEAD
+<<<<<<< HEAD
+.idea/
+=======
+.idea/
+>>>>>>> 22a372052d6f5a846be83c0cae8ef1ec22b0574e
+=======
+.idea/
+>>>>>>> 22a372052d6f5a846be83c0cae8ef1ec22b0574e
