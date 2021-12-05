@@ -33,11 +33,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         LinkedList<Pokemon> pokeList = new LinkedList<Pokemon>();
         int[] stats = {1,1,1,1,1,1};
         Pokemon Bulbasaur = new Pokemon("Bulbasaur", stats, "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png", "descURL", "Grass", 1);
 
 
+=======
+        Pokemon Bulbasaur = new Pokemon("aaa");
+>>>>>>> 22a372052d6f5a846be83c0cae8ef1ec22b0574e
 =======
         Pokemon Bulbasaur = new Pokemon("aaa");
 >>>>>>> 22a372052d6f5a846be83c0cae8ef1ec22b0574e
