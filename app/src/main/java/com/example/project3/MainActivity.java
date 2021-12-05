@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 //        int i = 0;
                 try {
                     JSONObject object = new JSONObject(x);
-                    JSONObject name = object.getJSONObject("name");
+
 //            while (i<itemsArray.length() && mName == null /* && mDescription == null && mType == null && mDexNumber == null && mIcon == null && mStats == null */) {
 //                JSONObject pokemon = itemsArray.getJSONObject(i);
 //                JSONObject dex = pokemon.getJSONObject("dex");
