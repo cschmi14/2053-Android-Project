@@ -31,9 +31,14 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Pokemon Bulbasaur = new Pokemon("aaa");
+        LinkedList<Pokemon> pokeList = new LinkedList<Pokemon>();
+        int[] stats = {1,1,1,1,1,1};
+        Pokemon Bulbasaur = new Pokemon("Bulbasaur", stats, "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png", "descURL", "Grass", 1);
         pokeList.add(Bulbasaur);
-        pokeList.add(new Pokemon("New guy"));
+//        for (int i = 0; i < 10; i++) {
+//            FetchPokemon fp = new FetchPokemon();
+//            fp.execute(Integer.toString(i));
+//        }
         mRecyclerView = findViewById(R.id.main_recycler);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new PokemonAdapter(this, pokeList);
@@ -101,8 +106,8 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     JSONObject object = new JSONObject(x);
                     Log.d("Object name", object.getString("name"));
-                    Pokemon pk = new Pokemon(object.getString("name"));
-                    pokeList.add(pk);
+//                    Pokemon pk = new Pokemon(object.getString("name"));
+//                    pokeList.add(pk);
 //                    JSONObject name = object.getJSONObject("name");
 //            while (i<itemsArray.length() && mName == null /* && mDescription == null && mType == null && mDexNumber == null && mIcon == null && mStats == null */) {
 //                JSONObject pokemon = itemsArray.getJSONObject(i);
@@ -122,8 +127,8 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     JSONObject json_name = new JSONObject(json);
                     String pkmn_name = json_name.getString("name");
-                    Pokemon pkmn = new Pokemon(pkmn_name);
-                    return pkmn;
+//                    Pokemon pkmn = new Pokemon(pkmn_name);
+//                    return pkmn;
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
