@@ -25,8 +25,7 @@ public class FetchPokemon extends AsyncTask <String, Void, String>{
 //    private String mType;
 //    private String mDexNumber;
 
-    FetchPokemon(TextView mName) {
-        this.mName = new WeakReference<TextView>(mName);
+    FetchPokemon() {
 //        this.mStats = mStats;
 //        this.mDescription = mDescription;
 //        this.mType = mType;
@@ -50,7 +49,7 @@ public class FetchPokemon extends AsyncTask <String, Void, String>{
         InputStream inputStream = urlConnection.getInputStream();
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
-        //Create a String with the reponse
+        //Create a String with the response
         StringBuilder builder = new StringBuilder();
         String line;
         while ((line = reader.readLine()) != null) {
@@ -62,22 +61,11 @@ public class FetchPokemon extends AsyncTask <String, Void, String>{
         return jsonString;
     }
 
-//    @Override
-//    protected String doInBackground(String... strings) {
-//        String jsonString = null;
-//        try {
-//            jsonString = getPokemonInfo(strings[0]);
-//        } catch(IOException e) {
-//            e.printStackTrace();
-//        }
-//        return jsonString;
-//    }
-
     @Override
     protected String doInBackground(String... strings) {
         String jsonString = null;
         try {
-            jsonString = getPokemonInfo("1");
+            jsonString = getPokemonInfo(strings[0]);
         } catch(IOException e) {
             e.printStackTrace();
         }
@@ -93,7 +81,7 @@ public class FetchPokemon extends AsyncTask <String, Void, String>{
 //        String[] mStats = null;
         JSONObject jsonObject = null;
         JSONArray itemsArray = null;
-        int i = 0;
+//        int i = 0;
         try {
             JSONObject object = new JSONObject(x);
             JSONObject name = object.getJSONObject("name");
