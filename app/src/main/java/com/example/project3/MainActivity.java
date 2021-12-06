@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new PokemonAdapter(this, pokeList);
         mRecyclerView.setAdapter(mAdapter);
 //
-        for (int i = 1; i < 10; i++) {
+        for (int i = 1; i < 50; i++) {
             load_data(i);
         }
 
