@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        LinkedList<Pokemon> pokeList = new LinkedList<Pokemon>();
         Pokemon Bulbasaur = new Pokemon();
         int[] stats = {1,1,1,1,1,1};
         Bulbasaur.setName("Bulbasaur");
@@ -40,19 +39,20 @@ public class MainActivity extends AppCompatActivity {
         Bulbasaur.setType("Grass");
         Bulbasaur.setDexNumber(1);
         pokeList.add(Bulbasaur);
-//        for (int i = 0; i < 10; i++) {
-//            FetchPokemon fp = new FetchPokemon();
-//            fp.execute(Integer.toString(i));
-//        }
+
         mRecyclerView = findViewById(R.id.main_recycler);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new PokemonAdapter(this, pokeList);
         mRecyclerView.setAdapter(mAdapter);
-        load_data();
 //
+        for (int i = 1; i < 10; i++) {
+            load_data(i);
+        }
+
+
     }
 
-    private void load_data() {
+    private void load_data(int i) {
         AsyncTask<String, Void, String> task = new AsyncTask <String, Void, String>() {
             protected String getPokemonInfo(String query) throws IOException {
                 //Pokemon API URL
@@ -86,8 +86,9 @@ public class MainActivity extends AppCompatActivity {
                 String jsonString = null;
                 try {
                     jsonString = getPokemonInfo(strings[0]);
-                    Pokemon pkmn = parseJson(jsonString);
-                    pokeList.add(pkmn);
+//                    Pokemon pkmn = parseJson(jsonString);
+//                    Log.d("name", pkmn.getName());
+//                    pokeList.add(pkmn);
                 } catch(IOException e) {
                     e.printStackTrace();
                 }
@@ -96,36 +97,14 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             protected void onPostExecute(String x) {
-                mAdapter.notifyDataSetChanged();
-                String mName = null;
-//        String mDescription = null;
-//        String mType = null;
-//        String mDexNumber = null;
-//        String mIcon = null;
-//        String[] mStats = null;
-                JSONObject jsonObject = null;
-                JSONArray itemsArray = null;
-                Log.d("FetchBookTagJsonString", x);
+                Pokemon pkmn = parseJson(x);
+                Log.d("POKEMONS NAME", pkmn.getName());
+                Log.d("BEFORE ADDING", Integer.toString(pokeList.size()));
+                pokeList.add(pkmn);
 
-//        int i = 0;
-                try {
-                    JSONObject object = new JSONObject(x);
-                    Log.d("Object name", object.getString("name"));
-//                    Pokemon pk = new Pokemon(object.getString("name"));
-//                    pokeList.add(pk);
-//                    JSONObject name = object.getJSONObject("name");
-//            while (i<itemsArray.length() && mName == null /* && mDescription == null && mType == null && mDexNumber == null && mIcon == null && mStats == null */) {
-//                JSONObject pokemon = itemsArray.getJSONObject(i);
-//                JSONObject dex = pokemon.getJSONObject("dex");
-//                title = volumeInfo.getString("title");
-//                author = volumeInfo.getString("authors");
-//                mName.get().setText(mName);
-//                mTitleText.get().setText(title);
-//                i++;
-//            }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                Log.d("MESSAGE HERE", Integer.toString(pokeList.size()));
+                mAdapter.notifyDataSetChanged();
+                Log.d("Shoulda updated", "ME");
             }
 
             private Pokemon parseJson(String json) {
@@ -137,6 +116,10 @@ public class MainActivity extends AppCompatActivity {
                     String type = ;
                     int dexNum = json_str.getInt("id");
                     Pokemon pkmn = new Pokemon(pkmn_name, stats, icon, type, dexNum);
+                    JSONObject json_name = new JSONObject(json);
+                    String pkmn_name = json_name.getString("name");
+                    Pokemon pkmn = new Pokemon();
+                    pkmn.setName(pkmn_name);
                     return pkmn;
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -144,8 +127,7 @@ public class MainActivity extends AppCompatActivity {
                 return null;
             }
         };
-        for (int i = 1; i < 11; i++) {
-            task.execute(Integer.toString(i));
-        }
+        task.execute(Integer.toString(i));
+        Log.d("MAN", "I LOVE POP");
     }
 }
