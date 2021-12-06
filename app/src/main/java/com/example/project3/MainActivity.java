@@ -133,9 +133,9 @@ public class MainActivity extends AppCompatActivity {
                     JSONObject json_str = new JSONObject(json);
                     String pkmn_name = json_str.getString("name");
                     int[] stats = json_str.getJSONArray("stats");
-                    String icon = ;
+                    String icon = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vii/icons/1.png";
                     String type = ;
-                    int dexNum = ;
+                    int dexNum = json_str.getInt("id");
                     Pokemon pkmn = new Pokemon(pkmn_name, stats, icon, type, dexNum);
                     return pkmn;
                 } catch (Exception e) {

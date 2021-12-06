@@ -13,7 +13,7 @@ public class Pokemon {
         this.icon = icon;
         this.type = type;
         this.dexNumber = dexNumber;
-        
+    }
 
     public String getIcon() {
         return this.icon;
