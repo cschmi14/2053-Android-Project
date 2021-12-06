@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        LinkedList<Pokemon> pokeList = new LinkedList<Pokemon>();
         Pokemon Bulbasaur = new Pokemon();
         int[] stats = {1,1,1,1,1,1};
         Bulbasaur.setName("Bulbasaur");
@@ -49,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 1; i < 10; i++) {
             load_data(i);
         }
+
+
     }
 
     private void load_data(int i) {
@@ -85,9 +86,9 @@ public class MainActivity extends AppCompatActivity {
                 String jsonString = null;
                 try {
                     jsonString = getPokemonInfo(strings[0]);
-                    Pokemon pkmn = parseJson(jsonString);
-                    Log.d("name", pkmn.getName());
-                    pokeList.add(pkmn);
+//                    Pokemon pkmn = parseJson(jsonString);
+//                    Log.d("name", pkmn.getName());
+//                    pokeList.add(pkmn);
                 } catch(IOException e) {
                     e.printStackTrace();
                 }
@@ -96,8 +97,14 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             protected void onPostExecute(String x) {
-                mAdapter.notifyDataSetChanged();
+                Pokemon pkmn = parseJson(x);
+                Log.d("POKEMONS NAME", pkmn.getName());
+                Log.d("BEFORE ADDING", Integer.toString(pokeList.size()));
+                pokeList.add(pkmn);
 
+                Log.d("MESSAGE HERE", Integer.toString(pokeList.size()));
+                mAdapter.notifyDataSetChanged();
+                Log.d("Shoulda updated", "ME");
             }
 
             private Pokemon parseJson(String json) {
@@ -114,5 +121,6 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         task.execute(Integer.toString(i));
+        Log.d("MAN", "I LOVE POP");
     }
 }
