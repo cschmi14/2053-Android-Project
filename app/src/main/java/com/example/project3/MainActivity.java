@@ -36,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
         Bulbasaur.setName("Bulbasaur");
         Bulbasaur.setStats(stats);
         Bulbasaur.setIcon("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png");
-        Bulbasaur.setType("Grass");
+        Bulbasaur.setTypeA("Grass");
+        Bulbasaur.setTypeB("Poison");
         Bulbasaur.setDexNumber(1);
         pokeList.add(Bulbasaur);
 
@@ -98,28 +99,34 @@ public class MainActivity extends AppCompatActivity {
             @Override
             protected void onPostExecute(String x) {
                 Pokemon pkmn = parseJson(x);
-                Log.d("POKEMONS NAME", pkmn.getName());
-                Log.d("BEFORE ADDING", Integer.toString(pokeList.size()));
+                Log.d("TYPEA", pkmn.getTypeA());
+                if (pkmn.getTypeB() != null)
+                    Log.d("TYPEB", pkmn.getTypeB());
                 pokeList.add(pkmn);
-
-                Log.d("MESSAGE HERE", Integer.toString(pokeList.size()));
                 mAdapter.notifyDataSetChanged();
-                Log.d("Shoulda updated", "ME");
             }
 
             private Pokemon parseJson(String json) {
                 try {
-                    JSONObject json_str = new JSONObject(json);
-                    String pkmn_name = json_str.getString("name");
-                    int[] stats = json_str.getJSONArray("stats");
-                    String icon = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vii/icons/1.png";
-                    String type = ;
-                    int dexNum = json_str.getInt("id");
-                    Pokemon pkmn = new Pokemon(pkmn_name, stats, icon, type, dexNum);
                     JSONObject json_name = new JSONObject(json);
-                    String pkmn_name = json_name.getString("name");
                     Pokemon pkmn = new Pokemon();
+                    String pkmn_name = json_name.getString("name");
                     pkmn.setName(pkmn_name);
+
+                    
+
+                    JSONArray typeArr = json_name.getJSONArray("types");
+                    JSONObject firstTypeArr = typeArr.getJSONObject(0);
+                    String firstType = firstTypeArr.getJSONObject("type").getString("name");
+                    pkmn.setTypeA(firstType);
+
+                    if (typeArr.length() == 2)
+                    {
+                        JSONObject secondTypeArr = typeArr.getJSONObject(1);
+                        String secondType = secondTypeArr.getJSONObject("type").getString("name");
+                        pkmn.setTypeB(secondType);
+                    }
+
                     return pkmn;
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -128,6 +135,5 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         task.execute(Integer.toString(i));
-        Log.d("MAN", "I LOVE POP");
     }
 }
