@@ -133,6 +133,5 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         task.execute(Integer.toString(i));
-        Log.d("MAN", "I LOVE POP");
     }
 }
