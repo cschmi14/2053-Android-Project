@@ -112,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
                     Pokemon pkmn = new Pokemon();
                     String pkmn_name = json_name.getString("name");
                     pkmn.setName(pkmn_name);
-
                     
 
                     JSONArray typeArr = json_name.getJSONArray("types");
