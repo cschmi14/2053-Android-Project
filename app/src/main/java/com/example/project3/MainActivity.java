@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void load_data(int i) {
+        @SuppressLint("StaticFieldLeak")
         AsyncTask<String, Void, String> task = new AsyncTask <String, Void, String>() {
             protected String getPokemonInfo(String query) throws IOException {
                 //Pokemon API URL
