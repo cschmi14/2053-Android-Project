@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new PokemonAdapter(this, pokeList);
         mRecyclerView.setAdapter(mAdapter);
 //
-        for (int i = 1; i < 50; i++) {
+        for (int i = 1; i < 150; i++) {
             load_data(i);
         }
 
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                 Pokemon pkmn = parseJson(x);
                 Log.d("TYPEA", pkmn.getTypeA());
                 if (pkmn.getTypeB() != null)
-                Log.d("TYPEB", pkmn.getTypeB());
+                    Log.d("TYPEB", pkmn.getTypeB());
                 pokeList.add(pkmn);
                 mAdapter.notifyDataSetChanged();
             }
@@ -114,6 +114,16 @@ public class MainActivity extends AppCompatActivity {
                     Pokemon pkmn = new Pokemon();
                     String pkmn_name = json_name.getString("name");
                     pkmn.setName(pkmn_name);
+
+                    JSONArray json_stats = json_name.getJSONArray("stats");
+                    int[] stats = new int[6];
+                    for (int i = 0; i < 6; i++) {
+                        JSONObject stat_cat = json_stats.getJSONObject(i);
+                        Log.d("statcat", "loopcheck");
+                        String stat_value = stat_cat.getString("base_stat");
+                        stats[i] = Integer.parseInt(stat_value);
+                    }
+                    pkmn.setStats(stats);
 
                     JSONArray typeArr = json_name.getJSONArray("types");
                     JSONObject firstTypeArr = typeArr.getJSONObject(0);

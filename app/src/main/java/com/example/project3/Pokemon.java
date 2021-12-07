@@ -31,7 +31,7 @@ public class Pokemon {
     }
     public void setName(String name)
     {
-    this.name = name;}
+        this.name = name;}
 
 
     public String getTypeA() {
