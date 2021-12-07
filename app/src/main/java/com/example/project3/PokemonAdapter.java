@@ -6,10 +6,13 @@ import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
@@ -42,6 +45,9 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonV
         // TODO: Set view holder properties to appropriate info
         Pokemon currentPoke = pokemon.get(position);
         holder.mName.setText(currentPoke.getName());
+        holder.mDexNumber.setText(Integer.toString(position));
+        String imageURL = currentPoke.getIcon();
+        Picasso.get().load(imageURL).into(holder.mIcon);
     }
 
     @Override
@@ -52,10 +58,14 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonV
     class PokemonViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView mName;
         private PokemonAdapter adapter;
+        private ImageView mIcon;
+        private TextView mDexNumber;
         public PokemonViewHolder(View itemView, PokemonAdapter adapter) {
             super(itemView);
             // TODO: find views by id
             mName = (TextView) itemView.findViewById(R.id.pokemon_name);
+            mDexNumber = (TextView) itemView.findViewById(R.id.pokemon_dex_number);
+            mIcon = (ImageView) itemView.findViewById(R.id.pokemon_image_recyclerview);
             this.adapter = adapter;
             itemView.setOnClickListener(this);
         }

@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new PokemonAdapter(this, pokeList);
         mRecyclerView.setAdapter(mAdapter);
 //
-        for (int i = 1; i < 150; i++) {
+        for (int i = 1; i <= 151; i++) {
             load_data(i);
         }
 
@@ -119,7 +119,6 @@ public class MainActivity extends AppCompatActivity {
                     int[] stats = new int[6];
                     for (int i = 0; i < 6; i++) {
                         JSONObject stat_cat = json_stats.getJSONObject(i);
-                        Log.d("statcat", "loopcheck");
                         String stat_value = stat_cat.getString("base_stat");
                         stats[i] = Integer.parseInt(stat_value);
                     }
@@ -137,6 +136,9 @@ public class MainActivity extends AppCompatActivity {
                         pkmn.setTypeB(secondType);
                     }
 
+                    JSONObject sprites = json_name.getJSONObject("sprites");
+                    String front_default = sprites.getString("front_default");
+                    pkmn.setIcon(front_default);
                     return pkmn;
                 } catch (Exception e) {
                     e.printStackTrace();
