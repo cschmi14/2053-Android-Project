@@ -45,7 +45,7 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonV
         // TODO: Set view holder properties to appropriate info
         Pokemon currentPoke = pokemon.get(position);
         holder.mName.setText(currentPoke.getName());
-        holder.mDexNumber.setText(Integer.toString(position));
+        holder.mDexNumber.setText(Integer.toString(currentPoke.getDexNumber()));
         String imageURL = currentPoke.getIcon();
         Picasso.get().load(imageURL).resize(150, 150).into(holder.mIcon);
     }

@@ -139,6 +139,9 @@ public class MainActivity extends AppCompatActivity {
                     JSONObject sprites = json_name.getJSONObject("sprites");
                     String front_default = sprites.getString("front_default");
                     pkmn.setIcon(front_default);
+
+                    String dexNumber = json_name.getString("id");
+                    pkmn.setDexNumber(Integer.parseInt(dexNumber));
                     return pkmn;
                 } catch (Exception e) {
                     e.printStackTrace();
