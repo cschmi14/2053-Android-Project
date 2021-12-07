@@ -32,21 +32,12 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Pokemon Bulbasaur = new Pokemon();
-        int[] stats = {1,1,1,1,1,1};
-        Bulbasaur.setName("Bulbasaur");
-        Bulbasaur.setStats(stats);
-        Bulbasaur.setIcon("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png");
-        Bulbasaur.setTypeA("Grass");
-        Bulbasaur.setTypeB("Poison");
-        Bulbasaur.setDexNumber(1);
-        pokeList.add(Bulbasaur);
 
         mRecyclerView = findViewById(R.id.main_recycler);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new PokemonAdapter(this, pokeList);
         mRecyclerView.setAdapter(mAdapter);
-//
+
         for (int i = 1; i <= 151; i++) {
             load_data(i);
         }
