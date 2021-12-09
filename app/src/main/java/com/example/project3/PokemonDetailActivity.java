@@ -33,11 +33,17 @@ public class PokemonDetailActivity extends AppCompatActivity {
         int[] stats = intent.getIntArrayExtra("STATS");
         //int dexNumber = intent.getIntExtra("DEXNUMBER");
         String description = intent.getStringExtra("DESCRIPTION");
-        String type = intent.getStringExtra("TYPE");
+        String typeA = intent.getStringExtra("TYPEA");
+        String typeB = intent.getStringExtra("TYPEB");
 
         String detailString = "";
         detailString += "NAME: " + name + "\n\n";
-        detailString += "TYPE: " + type + "\n\n";
+        if (typeB == null) {
+            detailString += "TYPE: " + typeA + "\n\n";
+        }
+        else {
+            detailString += "TYPE: " + typeA + ", " + typeB + "\n\n";
+        }
         detailString += "STATS: " + "\n";
         detailString += "Hp = " + stats[0] + "\n";
         detailString += "Attack = " + stats[1] + "\n";

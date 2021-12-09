@@ -77,7 +77,8 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonV
             intent.putExtra("NAME", pokemon.get(mPosition).getName());
             intent.putExtra("STATS", pokemon.get(mPosition).getStats());
             intent.putExtra("ICON", pokemon.get(mPosition).getIcon());
-            intent.putExtra("TYPE", pokemon.get(mPosition).getTypeA());
+            intent.putExtra("TYPEA", pokemon.get(mPosition).getTypeA());
+            intent.putExtra("TYPEB", pokemon.get(mPosition).getTypeB());
             intent.putExtra("DEXNUMBER", pokemon.get(mPosition).getDexNumber());
             context.startActivity(intent);
         }
